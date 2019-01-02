@@ -10,5 +10,19 @@
         ],
         "institution_address_siam": "New York, NY 10027",
         "name": "Christopher J. Wright"
+    },
+    {
+        "author_order": 0,
+        "email": "sb2896@columbia.edu",
+        "github_id": "sbillinge",
+        "institution": "Columbia University",
+        "institution_address": "",
+        "institution_address_peerj": [
+            "Department of Applied Physics and Applied Mathematics, Columbia University, New York, NY 10027",
+            "Condensed Matter Physics and Materials Science Department, Brookhaven National Laboratory, Upton, NY 11973"
+        ],
+        "institution_address_siam": "New York, NY 10027",
+        "name": "Simon J. L. Billinge"
     }
+
 ]
