@@ -31,126 +31,80 @@ Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract te
 \maketitle
 \thispagestyle{empty}
 
-\section*{Introduction}
 
-Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
-
-If you have a question, please use the help menu in the top right of the screen to get in touch. When your article or pre-print is complete, use the "Submit to PeerJ" button in the topbar to send your files to PeerJ.
-
-\subsection*{About PeerJ}
-
-PeerJ is an award-winning open access publisher covering the biological and medical sciences.  PeerJ provides authors with three publication venues: \textit{PeerJ} and \textit{PeerJ Computer Science} (peer-reviewed academic journals) and \textit{PeerJ PrePrints} (a 'pre-print server'). See https://peerj.com/about/publications/ for more information.
-
-The PeerJ model allows an author to publish articles in their peer-reviewed journal via the purchase of a lifetime Publication Plan. Prices start from just \$99 (a one-off payment) which entitles an author to the lifetime ability to publish 1 article per year for free. Publication in PeerJ PrePrints is entirely free.
-
-\section*{Some \LaTeX{} Examples}
-\label{sec:examples}
-
-Use section and subsection commands to organize your document. \LaTeX{} handles all the formatting and numbering automatically. Use ref and label commands for cross-references.
-
-\subsection*{Figures and Tables}
-
-Use the table and tabular commands for basic tables --- see Table~\ref{tab:widgets}, for example. You can upload a figure (JPEG, PNG or PDF) using the project menu. To include it in your document, use the includegraphics command as in the code for Figure~\ref{fig:view} below.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\linewidth]{view}
-\caption{An example image.}
-\label{fig:view}
-\end{figure}
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{l|r}
-Item & Quantity \\\hline
-Widgets & 42 \\
-Gadgets & 13
-\end{tabular}
-\caption{\label{tab:widgets}An example table.}
-\end{table}
-
-\subsection*{Citations}
-
-LaTeX formats citations and references automatically using the bibliography records in your .bib file, which you can edit via the project menu. Use the cite command for an inline citation, like \cite{Figueredo:2009dg}, and the citep command for a citation in parentheses \citep{Figueredo:2009dg}.
-
-\subsection*{Mathematics}
-
-\LaTeX{} is great at typesetting mathematics. Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
-$$S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
-      = \frac{1}{n}\sum_{i}^{n} X_i$$
-denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
-
-\subsection*{Lists}
-
-You can make lists with automatic numbering \dots
-
-\begin{enumerate}[noitemsep] 
-\item Like this,
-\item and like this.
+\section*{Sketch}
+\begin{enumerate}
+\item Conda-Forge is a binary distro using conda aimed at making code 
+available to users across platforms, operating systems, and languages.
+\item Three perspectives:
+\begin{enumerate}
+\item Users: Use CF via `conda install xyz -c conda-forge`. CF focuses
+on making sure that packages installed from CF are self consistant.
+\item Package Maintainers: The CF workflow focuses on using the standard 
+GitHub fork, branch, and pull request model. New packages are created via 
+PRs into staged-recipes. Updates to existing packages are made by PRs into 
+the associated feedstock.
+\item Ecosystem Maintainers: Automated tools for keeping the ecosystem
+self-consistant and up to date.
 \end{enumerate}
-\dots or bullet points \dots
-\begin{itemize}[noitemsep] 
-\item Like this,
-\item and like this.
-\end{itemize}
-\dots or with words and descriptions \dots
-\begin{description}
-\item[Word] Definition
-\item[Concept] Explanation
-\item[Idea] Text
-\end{description}
+\item Future work will focus on moving to new architectures (arm, powerpc,
+web assembly) and reducing maintainer friction.
+\end{enumerate}
 
-We hope you find write\LaTeX\ useful for your PeerJ submission, and please let us know if you have any feedback. Further examples with dummy text are included in the following pages.
 
-\section*{Methods}
+\section*{Introduction}
+\begin{enumerate}
+\item Software is a critical part of science, with almost all research groups
+using scientific software, and many groups writing software for their own and
+other's use.
+\item There is a gap (sometimes gulf) between writing software and using 
+software. Packaging fills this gap.
+\item Conda is a binary distribution, meaning that the difficulties associated
+with compiling the code are handled by the code developers.
+\item Conda-Forge is a packaging ecosystem based around the conda package 
+manager which focuses on being a community-driven with high standards, a binary 
+distribution with all the binaries built in the open, welcoming to beginners 
+with support from packaging veterans.
+\end{enumerate}
 
-\lipsum[4] % Dummy text
+\section*{User's Perspective}
+\begin{enumerate}
+% why use conda/CF
+\item Conda is a binary package manager.
+\item CF's graph and SAT solver help maintain self-consistancy of
+packages and environments
+\item Adding the CF channel to the \texttt{.condarc} to enable CF
+inside conda
+\end{enumerate}
 
-\begin{equation}
-\cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
-\label{eq:refname2}
-\end{equation}
+\section*{Package Maintainer's Perspective}
+\begin{enumerate}
+\item Submit new packages via GitHub using PRs into the staged-recipes repo 
+[view graph of staged-recipes workflow]
+\item Modify existing packages via PRs into feedstock repos [view graph of 
+feedstock workflow]
+\item CF uses continuous integration (CI) services to build the packages
+\item Webservices provide interactive tools for linting and modification of PRs
+\end{enumerate}
 
-\lipsum[5] % Dummy text
+\section*{Ecosystem Maintainer's Perspective}
+\begin{enumerate}
+\item The CF graph allows us to rebuild the entirety of conda-forge in 
+topological order [include view graph of graph]
+\item The autotick bot keeps versions up to date and allows for the 
+rebuilding of conda-forge
+\item The global pinnings repo determines what the net ABI surface is, 
+keeping the ecosystem consistant
+\item The CF graph is accessable via \texttt{cf-graph3} and \texttt{libcfgraph}
+\end{enumerate}
 
-\subsection*{Subsection}
 
-\lipsum[6] % Dummy text
+\section*{Conclusions}
+\begin{enumerate}
+\item CF provides a powerful platform for the distribution of scientific 
+software focusing on ecosystem stability, build tracability, and automation.
+\end{enumerate}
 
-\paragraph{Paragraph} \lipsum[7] % Dummy text
-\paragraph{Paragraph} \lipsum[8] % Dummy text
-
-\subsection*{Subsection}
-
-\lipsum[9] % Dummy text
-
-\begin{figure}[ht]\centering
-\includegraphics[width=\linewidth]{results}
-\caption{In-text Picture}
-\label{fig:results}
-\end{figure}
-
-Reference to Figure \ref{fig:results}.
-
-\section*{Results and Discussion}
-
-\lipsum[10] % Dummy text
-
-\subsection*{Subsection}
-
-\lipsum[11] % Dummy text
-
-\subsubsection*{Subsubsection}
-
-\lipsum[12] % Dummy text
-
-\subsubsection*{Subsubsection}
-
-\lipsum[14] % Dummy text
-
-\subsection*{Subsection}
-
-\lipsum[15-20] % Dummy text
 
 \section*{Acknowledgments}
 
