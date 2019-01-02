@@ -1,7 +1,7 @@
-%% Submissions for peer-review must enable line-numbering 
+%% Submissions for peer-review must enable line-numbering
 %% using the lineno option in the \documentclass command.
 %%
-%% Preprints and camera-ready submissions do not need 
+%% Preprints and camera-ready submissions do not need
 %% line numbers, and should have this option removed.
 %%
 %% Please note that the line numbering option requires
@@ -11,7 +11,17 @@
 \documentclass[fleqn,10pt,lineno]{wlpeerj} % for journal submissions
 % \documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
 
-\title{Conda-Forge: a community driven software packging ecosystem}
+\newcommand{\sjb}[1]{\textcolor{blue}{[sjb:#1]}}
+
+% Simon utils
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+
+\title{Conda-Forge: a community driven software packaging ecosystem}
 
 % Will fill in via the magic of jinja2 at some point
 \author[1]{First Author}
@@ -34,15 +44,15 @@ Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract te
 
 \section*{Sketch}
 \begin{enumerate}
-\item Conda-Forge is a binary distro using conda aimed at making code 
+\item Conda-Forge is a binary distro using conda aimed at making code
 available to users across platforms, operating systems, and languages.
 \item Three perspectives:
 \begin{enumerate}
 \item Users: Use CF via `conda install xyz -c conda-forge`. CF focuses
 on making sure that packages installed from CF are self consistant.
-\item Package Maintainers: The CF workflow focuses on using the standard 
-GitHub fork, branch, and pull request model. New packages are created via 
-PRs into staged-recipes. Updates to existing packages are made by PRs into 
+\item Package Maintainers: The CF workflow focuses on using the standard
+GitHub fork, branch, and pull request model. New packages are created via
+PRs into staged-recipes. Updates to existing packages are made by PRs into
 the associated feedstock.
 \item Ecosystem Maintainers: Automated tools for keeping the ecosystem
 self-consistant and up to date.
@@ -54,56 +64,68 @@ web assembly) and reducing maintainer friction.
 
 \section*{Introduction}
 \begin{enumerate}
-\item Software is a critical part of science, with almost all research groups
-using scientific software, and many groups writing software for their own and
-other's use.
-\item There is a gap (sometimes gulf) between writing software and using 
-software. Packaging fills this gap.
-\item Conda is a binary distribution, meaning that the difficulties associated
-with compiling the code are handled by the code developers.
-\item Conda-Forge is a packaging ecosystem based around the conda package 
-manager which focuses on being a community-driven with high standards, a binary 
-distribution with all the binaries built in the open, welcoming to beginners 
-with support from packaging veterans.
-\end{enumerate}
+\item Software is a critical part of modern life, from health to commerce to science.
+\item It is increasingly important to be able to distribute and share software.
+\item This is particularly important in the context of open-source community developed software.
+\item for example in scientific software many groups write software for their own use, but want to share the code more broadly.
+\item Packaging software and uploading to package repositories such as pypi~\cite{??} and conda~\cite{???} serves this role.
+\item Conda hosts binary distributions, meaning that the difficulties associated
+with compiling and releasing the code must be handled by the code developers themselves.
+\item This is often a bottleneck as software developers are often domain experts but not necessarily expert in compilation and distribution of software
+\item Conda-Forge addresses this need, by separating the code development and package management tasks.
+\item Conda-Forge is a packaging ecosystem based around the conda package
+manager.  
+\item It focuses on being community-driven with high standards
+\item It forms a natural partner with the open-source community software movement
+\item It produces a binary
+distribution but with all the binaries built in the open, in an environment that is welcoming to beginners with support from packaging veterans.
+\item This paper describes the Conda Forge philosophy and organization and we hope it will
+inspire people to join the conda-forge community.
+\end{enumerate}\seti
 
 \section*{User's Perspective}
-\begin{enumerate}
+\begin{enumerate}\conti
 % why use conda/CF
-\item Conda is a binary package manager.
+\item Conda is a binary package manager, etc..
+\item compare and contrast conda with pypi
+\item CF and conda:  from the user perspective, conda-forge is a channel on conda
+\item Why should a user set conda-forge as default channel?
 \item CF's graph and SAT solver help maintain self-consistancy of
-packages and environments
-\item Adding the CF channel to the \texttt{.condarc} to enable CF
+packages and environments\sjb{does the user care about this?  Should this be in the next section?  Or if here, motivate why a user would care about this.}
+\item Setting up conda to use CF: Adding the CF channel to the \texttt{.condarc} to enable CF
 inside conda
-\end{enumerate}
+\end{enumerate}\seti
 
 \section*{Package Maintainer's Perspective}
-\begin{enumerate}
-\item Submit new packages via GitHub using PRs into the staged-recipes repo 
+\begin{enumerate}\conti
+\item probably need something about how package management is done in conda but outside of CF, so that when CF is described it looks much better than this.
+\item The CF approach: Submit new packages via GitHub to ??? using PRs into the staged-recipes repo\sjb{turn this around.  CF has a repo on GitHub called staged-recipes where package requirements are maintained.  New packages are added to staged-recipes via usual GitHub PR workflow.}
 [view graph of staged-recipes workflow]
-\item Modify existing packages via PRs into feedstock repos [view graph of 
-feedstock workflow]
+\item Modify existing packages via PRs into feedstock repos [view graph of
+feedstock workflow]\sjb{see above for the more gentle way of introducing these ideas}
 \item CF uses continuous integration (CI) services to build the packages
 \item Webservices provide interactive tools for linting and modification of PRs
-\end{enumerate}
+\end{enumerate}\seti
 
 \section*{Ecosystem Maintainer's Perspective}
-\begin{enumerate}
-\item The CF graph allows us to rebuild the entirety of conda-forge in 
+\begin{enumerate}\conti
+\item The CF graph allows us to rebuild the entirety of conda-forge in
 topological order [include view graph of graph]
-\item The autotick bot keeps versions up to date and allows for the 
-rebuilding of conda-forge
-\item The global pinnings repo determines what the net ABI surface is, 
-keeping the ecosystem consistant
+\item The autotick bot keeps versions up to date and allows for the
+rebuilding of conda-forge\sjb{again, start with the problem, then how CF solves the problem.}
+\item The global pinnings repo determines what the net ABI surface is,
+keeping the ecosystem consistant\sjb{no idea what htis means, so it also definitely needs to be broken out into a series of items that describe the problem and the CF solution.}
 \item The CF graph is accessable via \texttt{cf-graph3} and \texttt{libcfgraph}
-\end{enumerate}
+\end{enumerate}\seti
 
 
 \section*{Conclusions}
-\begin{enumerate}
-\item CF provides a powerful platform for the distribution of scientific 
+\begin{enumerate}\conti
+\item CF provides a powerful platform for the distribution of scientific
 software focusing on ecosystem stability, build tracability, and automation.
-\end{enumerate}
+\item users: use it
+\item software developers (and others): consider becoming CF contributors
+\end{enumerate}\seti
 
 
 \section*{Acknowledgments}
