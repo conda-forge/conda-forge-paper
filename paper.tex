@@ -12,6 +12,7 @@
 % \documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
 
 \newcommand{\sjb}[1]{\textcolor{blue}{[sjb:#1]}}
+\newcommand{\cjw}[1]{\textcolor{green}{[cjw:#1]}}
 
 % Simon utils
 \newcommand{\be}{\begin{enumerate}}
@@ -91,7 +92,10 @@ inspire people to join the conda-forge community.
 \item CF and conda:  from the user perspective, conda-forge is a channel on conda
 \item Why should a user set conda-forge as default channel?
 \item CF's graph and SAT solver help maintain self-consistancy of
-packages and environments\sjb{does the user care about this?  Should this be in the next section?  Or if here, motivate why a user would care about this.}
+packages and environments, making sure that all the packages work together
+\sjb{does the user care about this?  Should this be in the next section?  Or if here, motivate why a user would care about this.}
+\cjw{I think this falls under the heading of ``it just works''. Telling the users why it works may help to give confidence
+in it's working, and differentiate us from other package managers, eg pypi.}
 \item Setting up conda to use CF: Adding the CF channel to the \texttt{.condarc} to enable CF
 inside conda
 \end{enumerate}\seti
@@ -99,7 +103,8 @@ inside conda
 \section*{Package Maintainer's Perspective}
 \begin{enumerate}\conti
 \item probably need something about how package management is done in conda but outside of CF, so that when CF is described it looks much better than this.
-\item The CF approach: Submit new packages via GitHub to ??? using PRs into the staged-recipes repo\sjb{turn this around.  CF has a repo on GitHub called staged-recipes where package requirements are maintained.  New packages are added to staged-recipes via usual GitHub PR workflow.}
+\item The CF approach: Submit new packages via GitHub to ??? using PRs into the staged-recipes repo
+\sjb{turn this around.  CF has a repo on GitHub called staged-recipes where package requirements are maintained.  New packages are added to staged-recipes via usual GitHub PR workflow.}
 [view graph of staged-recipes workflow]
 \item Modify existing packages via PRs into feedstock repos [view graph of
 feedstock workflow]\sjb{see above for the more gentle way of introducing these ideas}
@@ -113,9 +118,21 @@ feedstock workflow]\sjb{see above for the more gentle way of introducing these i
 topological order [include view graph of graph]
 \item The autotick bot keeps versions up to date and allows for the
 rebuilding of conda-forge\sjb{again, start with the problem, then how CF solves the problem.}
-\item The global pinnings repo determines what the net ABI surface is,
-keeping the ecosystem consistant\sjb{no idea what htis means, so it also definitely needs to be broken out into a series of items that describe the problem and the CF solution.}
-\item The CF graph is accessable via \texttt{cf-graph3} and \texttt{libcfgraph}
+\item Maintaining self consistancy is especially important for binary packages.
+Binary packages ship an Application Binary Interface (ABI) which describes how other software
+can interact with the compiled binary.
+\item Mixing ABIs can be disastarous as the mismatch in expected ABI and 
+the actual ABI produces difficult to debug errors or erronious results.
+\item Without self consistancy packages could depend on different ABIs
+producing situations where packages are sighlently incompatable, forcing
+users to choose which part of the ecosystem they can use.
+\item To address this issue, and to make certain that each package in the 
+ecosystem is compatable with the rest of the ecosystem CF has a global 
+pinnings repository.
+This repository lists the current version of the package which CF builds
+all of its packages against, effectively defining all the ABIs that CF ships.
+\item The CF graph is accessable via \texttt{cf-graph3} and \texttt{libcfgraph}.
+These repos allow users to query the graph and artifacts
 \end{enumerate}\seti
 
 
