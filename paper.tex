@@ -91,24 +91,50 @@ inspire people to join the conda-forge community.
 \item compare and contrast conda with pypi
 \item CF and conda:  from the user perspective, conda-forge is a channel on conda
 \item Why should a user set conda-forge as default channel?
-\item CF's graph and SAT solver help maintain self-consistancy of
-packages and environments, making sure that all the packages work together
-\sjb{does the user care about this?  Should this be in the next section?  Or if here, motivate why a user would care about this.}
-\cjw{I think this falls under the heading of ``it just works''. Telling the users why it works may help to give confidence
-in it's working, and differentiate us from other package managers, eg pypi.}
+\begin{enumerate}
+\item CF has many of the commonly used packages, and is growing every day
+\item CF packages are gaurenteed to interoperate with other CF packages
+(which is a promise that not every channel can make)
+\item it is easy to add packages to CF (if a user ever wanted to release their
+own package)
+\end{enumerate}
 \item Setting up conda to use CF: Adding the CF channel to the \texttt{.condarc} to enable CF
 inside conda
 \end{enumerate}\seti
 
 \section*{Package Maintainer's Perspective}
 \begin{enumerate}\conti
-\item probably need something about how package management is done in conda but outside of CF, so that when CF is described it looks much better than this.
-\item The CF approach: Submit new packages via GitHub to ??? using PRs into the staged-recipes repo
-\sjb{turn this around.  CF has a repo on GitHub called staged-recipes where package requirements are maintained.  New packages are added to staged-recipes via usual GitHub PR workflow.}
+\item Building packages for all platforms and archetactures is hard, requireing
+a lot of infrastructure and hardware
+\item CF provides this infrastructure via continuous integration (CI) services,
+allowing builds on Windows, Mac, and Linux platforms.
+\item CF uses GitHub to hold the package recipes, the instructions for how to 
+build the package, and the CI configuration files in repositories called ``feedstocks''
+%\item probably need something about how package management is done in conda but outside of CF, so that when CF is described it looks much better than this.
+\item Workflows:
+\begin{enumerate}
+    \item Submitting a new package
+        \begin{enumerate}
+            \item Fork \texttt{conda-forge/staged-recipes}
+            \item Create a new branch
+            \item Add the recipe in a new folder under \texttt{recipes}
+            \item Open a pull request (PR) with the new recipe
+            \item Once the PR has been merged, a new feedstock repo
+                will be created and the folder removed
+%\sjb{turn this around.  CF has a repo on GitHub called staged-recipes where package requirements are maintained.  New packages are added to staged-recipes via usual GitHub PR workflow.}
 [view graph of staged-recipes workflow]
-\item Modify existing packages via PRs into feedstock repos [view graph of
-feedstock workflow]\sjb{see above for the more gentle way of introducing these ideas}
-\item CF uses continuous integration (CI) services to build the packages
+        \end{enumerate}
+    \item Modifying an existing package
+        \begin{enumerate}
+            \item Fork the feedstock
+            \item Create a new branch
+            \item Change the existing recipe
+            \item Open a pull request (PR) with the changes
+            \item Once the PR has been merged, the package will be updated
+[view graph offeedstock workflow]
+        \end{enumerate}
+\end{enumerate}
+%\sjb{see above for the more gentle way of introducing these ideas}
 \item Webservices provide interactive tools for linting and modification of PRs
 \end{enumerate}\seti
 
@@ -116,8 +142,13 @@ feedstock workflow]\sjb{see above for the more gentle way of introducing these i
 \begin{enumerate}\conti
 \item The CF graph allows us to rebuild the entirety of conda-forge in
 topological order [include view graph of graph]
-\item The autotick bot keeps versions up to date and allows for the
-rebuilding of conda-forge\sjb{again, start with the problem, then how CF solves the problem.}
+\item One of the most common changes to packages is version bumps, which are
+tedious to produce by hand, and were often out of sync with the source code
+version changes, since recipe mantianers aren't nessisarally aware of 
+changes in all the packages they maintain.
+\item The autotick bot was designed to address this issue by searching for
+updates to the source code of all the packages that conda-forge manages,
+and issuing PRs for packages which need to be updated.
 \item Maintaining self consistancy is especially important for binary packages.
 Binary packages ship an Application Binary Interface (ABI) which describes how other software
 can interact with the compiled binary.
@@ -131,6 +162,10 @@ ecosystem is compatable with the rest of the ecosystem CF has a global
 pinnings repository.
 This repository lists the current version of the package which CF builds
 all of its packages against, effectively defining all the ABIs that CF ships.
+\item The autotick bot infrastructure also helps maintain compatability by
+allowing for large scale migrations. These migrations move the entire ecosystem
+from one ABI version to another, rebuilding all the packages in dependency
+order.
 \item The CF graph is accessable via \texttt{cf-graph3} and \texttt{libcfgraph}.
 These repos allow users to query the graph and artifacts
 \end{enumerate}\seti
