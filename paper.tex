@@ -45,20 +45,20 @@ Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract te
 
 \section*{Sketch}
 \begin{enumerate}
-\item Conda-Forge is a binary distro using conda aimed at making code
+\item Conda-Forge is a binary distribution using conda aimed at making code
 available to users across platforms, operating systems, and languages.
 \item Three perspectives:
 \begin{enumerate}
 \item Users: Use CF via `conda install xyz -c conda-forge`. CF focuses
-on making sure that packages installed from CF are self consistant.
+on making sure that packages installed from CF are self consistent.
 \item Package Maintainers: The CF workflow focuses on using the standard
 GitHub fork, branch, and pull request model. New packages are created via
 PRs into staged-recipes. Updates to existing packages are made by PRs into
 the associated feedstock.
 \item Ecosystem Maintainers: Automated tools for keeping the ecosystem
-self-consistant and up to date.
+self-consistent and up to date.
 \end{enumerate}
-\item Future work will focus on moving to new architectures (arm, powerpc,
+\item Future work will focus on moving to new architectures (arm, PowerPC,
 web assembly) and reducing maintainer friction.
 \end{enumerate}
 
@@ -93,7 +93,7 @@ inspire people to join the conda-forge community.
 \item Why should a user set conda-forge as default channel?
 \begin{enumerate}
 \item CF has many of the commonly used packages, and is growing every day
-\item CF packages are gaurenteed to interoperate with other CF packages
+\item CF packages are guaranteed to interoperate with other CF packages
 (which is a promise that not every channel can make)
 \item it is easy to add packages to CF (if a user ever wanted to release their
 own package)
@@ -104,7 +104,7 @@ inside conda
 
 \section*{Package Maintainer's Perspective}
 \begin{enumerate}\conti
-\item Building packages for all platforms and archetactures is hard, requireing
+\item Building packages for all platforms and architectures is hard, requiring
 a lot of infrastructure and hardware
 \item CF provides this infrastructure via continuous integration (CI) services,
 allowing builds on Windows, Mac, and Linux platforms.
@@ -131,11 +131,11 @@ build the package, and the CI configuration files in repositories called ``feeds
             \item Change the existing recipe
             \item Open a pull request (PR) with the changes
             \item Once the PR has been merged, the package will be updated
-[view graph offeedstock workflow]
+[view graph of feedstock workflow]
         \end{enumerate}
 \end{enumerate}
 %\sjb{see above for the more gentle way of introducing these ideas}
-\item Webservices provide interactive tools for linting and modification of PRs
+\item Web services provide interactive tools for linting and modification of PRs
 \end{enumerate}\seti
 
 \section*{Ecosystem Maintainer's Perspective}
@@ -144,29 +144,29 @@ build the package, and the CI configuration files in repositories called ``feeds
 topological order [include view graph of graph]
 \item One of the most common changes to packages is version bumps, which are
 tedious to produce by hand, and were often out of sync with the source code
-version changes, since recipe mantianers aren't nessisarally aware of 
+version changes, since recipe maintainers aren't necessarily aware of 
 changes in all the packages they maintain.
 \item The autotick bot was designed to address this issue by searching for
 updates to the source code of all the packages that conda-forge manages,
 and issuing PRs for packages which need to be updated.
-\item Maintaining self consistancy is especially important for binary packages.
+\item Maintaining self consistency is especially important for binary packages.
 Binary packages ship an Application Binary Interface (ABI) which describes how other software
 can interact with the compiled binary.
-\item Mixing ABIs can be disastarous as the mismatch in expected ABI and 
-the actual ABI produces difficult to debug errors or erronious results.
-\item Without self consistancy packages could depend on different ABIs
-producing situations where packages are sighlently incompatable, forcing
+\item Mixing ABIs can be disastrous as the mismatch in expected ABI and 
+the actual ABI produces difficult to debug errors or erroneous results.
+\item Without self consistency packages could depend on different ABIs
+producing situations where packages are silently incompatible, forcing
 users to choose which part of the ecosystem they can use.
 \item To address this issue, and to make certain that each package in the 
-ecosystem is compatable with the rest of the ecosystem CF has a global 
-pinnings repository.
+ecosystem is compatible with the rest of the ecosystem CF has a global 
+pinning repository.
 This repository lists the current version of the package which CF builds
 all of its packages against, effectively defining all the ABIs that CF ships.
-\item The autotick bot infrastructure also helps maintain compatability by
+\item The autotick bot infrastructure also helps maintain compatibility by
 allowing for large scale migrations. These migrations move the entire ecosystem
 from one ABI version to another, rebuilding all the packages in dependency
 order.
-\item The CF graph is accessable via \texttt{cf-graph3} and \texttt{libcfgraph}.
+\item The CF graph is accessible via \texttt{cf-graph3} and \texttt{libcfgraph}.
 These repos allow users to query the graph and artifacts
 \end{enumerate}\seti
 
@@ -174,7 +174,7 @@ These repos allow users to query the graph and artifacts
 \section*{Conclusions}
 \begin{enumerate}\conti
 \item CF provides a powerful platform for the distribution of scientific
-software focusing on ecosystem stability, build tracability, and automation.
+software focusing on ecosystem stability, build traceability, and automation.
 \item users: use it
 \item software developers (and others): consider becoming CF contributors
 \end{enumerate}\seti
