@@ -1,0 +1,16 @@
+*~
+.~lock*
+.ipynb_checkpoints
+*.pyc
+*.tiff
+*.tif
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.lot
+*.out
+*.synctex
+*.synctex.gz
+*.toc

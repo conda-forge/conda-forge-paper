@@ -1,0 +1,102 @@
+[
+    {
+        "author_order": 10000,
+        "email": "cjwright4242@gmail.com",
+        "github_id": "CJ-Wright",
+        "institution": "Columbia University",
+        "institution_address": "",
+        "institution_address_peerj": [
+            "Department of Applied Physics and Applied Mathematics, Columbia University, New York, NY 10027"
+        ],
+        "institution_address_siam": "New York, NY 10027",
+        "name": "Christopher J. Wright"
+    },
+    {
+        "author_order": 0,
+        "email": "sb2896@columbia.edu",
+        "github_id": "sbillinge",
+        "institution": "Columbia University",
+        "institution_address": "",
+        "institution_address_peerj": [
+            "Department of Applied Physics and Applied Mathematics, Columbia University, New York, NY 10027",
+            "Condensed Matter Physics and Materials Science Department, Brookhaven National Laboratory, Upton, NY 11973"
+        ],
+        "institution_address_siam": "New York, NY 10027",
+        "name": "Simon J. L. Billinge"
+    },
+    {
+        "name": "Marcel Bargull",
+        "email": "marcel.bargull@udo.edu",
+        "github_id": "mbargull"
+    },
+    {
+        "name": "Matt Craig",
+        "email": "mattwcraig@gmail.com",
+        "github_id": "mwcraig"
+    },
+    {
+        "name": "Eric Dill",
+        "email": "thedizzle@gmail.com",
+        "github_id": "ericdill"
+    },
+    {
+        "name": "Phil Elson",
+        "email": "pelson.pub@gmail.com",
+        "github_id": "pelson"
+    },
+    {
+        "name": "Filipe Pires Alvarenga Fernandes",
+        "email": "ocefpaf@gmail.com",
+        "github_id": "ocefpaf"
+    },
+    {
+        "name": "Isuru Fernando",
+        "email": "isuruf@gmail.com",
+        "github_id": "isuruf"
+    },
+    {
+        "name": "Bj\u00f6rn Gr\u00fcning",
+        "email": "bjoern.gruening@gmail.com",
+        "github_id": "bgruening"
+    },
+    {
+        "name": "Jonathan J. Helmus",
+        "email": "jjhelmus@gmail.com",
+        "github_id": "jjhelmus"
+    },
+    {
+        "name": "John Kirkham",
+        "email": "kirkhamj@janelia.hhmi.org",
+        "github_id": "jakirkham"
+    },
+    {
+        "name": "Marius van Niekerk",
+        "email": "marius.v.niekerk@gmail.com",
+        "github_id": "mariusvniekerk"
+    },
+    {
+        "name": "Mike Sarahan",
+        "email": "msarahan@gmail.com",
+        "github_id": "msarahan"
+    },
+    {
+        "name": "Anthony Scopatz",
+        "email": "scopatz@gmail.com",
+        "github_id": "scopatz"
+    },
+    {
+        "name": "Patrick Snape",
+        "email": "patricksnape@gmail.com",
+        "github_id": "patricksnape"
+    },
+    {
+        "name": "Dougal J. Sutherland",
+        "email": "dougal@gmail.com",
+        "github_id": "dougalsutherland"
+    },
+    {
+        "name": "Lori A. Burns",
+        "email": "lori.burns@gmail.com",
+        "github_id": "loriab"
+    }
+]
