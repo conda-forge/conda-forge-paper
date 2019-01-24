@@ -46,17 +46,18 @@ Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract te
 \section*{Sketch}
 \begin{enumerate}
 \item Conda-Forge is a binary distribution using conda aimed at making code
-available to users across platforms, operating systems, and languages.
+  available to users across platforms, operating systems, and languages.
 \item Three perspectives:
 \begin{enumerate}
-\item Users: Use CF via `conda install xyz -c conda-forge`. CF focuses
-on making sure that packages installed from CF are self consistent.
-\item Package Maintainers: The CF workflow focuses on using the standard
-GitHub fork, branch, and pull request model. New packages are created via
-PRs into staged-recipes. Updates to existing packages are made by PRs into
-the associated feedstock.
+\item Users: Use CF via `conda install xyz -c conda-forge`. CF focuses on making
+  sure that packages installed from CF are self consistent.
+\item Package Maintainers: The CF workflow focuses on using the standard GitHub
+  fork, branch, and pull request model. New packages are created via PRs into
+  staged-recipes. Updates to existing packages are made by PRs into the
+  associated feedstock.
 \item Ecosystem Maintainers: Automated tools for keeping the ecosystem
-self-consistent and up to date.
+  self-consistent and up to date. Unified build tools across all workers ensures
+  package compatibility.
 \end{enumerate}
 \item Future work will focus on moving to new architectures (arm, PowerPC,
 web assembly) and reducing maintainer friction.
@@ -64,28 +65,55 @@ web assembly) and reducing maintainer friction.
 
 
 \section*{Introduction}
-\begin{enumerate}
-\item Software is a critical part of modern life, from health to commerce to science.
-\item It is increasingly important to be able to distribute and share software.
-\item This is particularly important in the context of open-source community developed software.
-\item for example in scientific software many groups write software for their own use, but want to share the code more broadly.
-\item Packaging software and uploading to package repositories such as pypi~\cite{??} and conda~\cite{???} serves this role.
-\item Conda hosts binary distributions, meaning that the difficulties associated
-with compiling and releasing the code must be handled by the code developers themselves.
-\item This is often a bottleneck as software developers are often domain experts but not necessarily expert in compilation and distribution of software
-\item Conda-Forge addresses this need, by separating the code development and package management tasks.
-\item Conda-Forge is a packaging ecosystem based around the conda package
-manager.  
-\item It focuses on being community-driven with high standards
-\item It forms a natural partner with the open-source community software movement
-\item It produces a binary
-distribution but with all the binaries built in the open, in an environment that is welcoming to beginners with support from packaging veterans.
-\item This paper describes the Conda Forge philosophy and organization and we hope it will
-inspire people to join the conda-forge community.
-\end{enumerate}\seti
+Software is a critical part of modern life, from health to commerce to science.
+It is increasingly important to be able to distribute and share software.
+Distribution is particularly important in the context of open-source community
+developed software, where code is readily available, but it is not always easy
+to put pieces together. In scientific software, many groups write software for
+their own use, but want to share the code more broadly. Scientific software is
+frequently difficult to get working, because the need for speed typically
+requires complex dependencies using compiled languages.
+
+Packaging software and uploading to package repositories such as PyPI~\cite{??}
+and anaconda.org~\cite{???} aids in the goal of distribution. PyPI hosts both
+package source code (sdists) and binary artifacts (wheels). Anaconda.org
+utilizes binary artifacts. Providing source code puts more of the onus of making
+things work onto the end user, but also simplifies compatibility across
+libraries. In general, it is too much to ask end users to set up compiler
+toolchains to directly use source code. Providing a binary artifact requires
+that the developer figures out build issues, but leaves the user with possible
+binary compatibility problems with binary artifacts from other sources.
+
+Unfortunately, preparing binary artifacts for distribution is often a bottleneck
+as software developers are often domain experts but not necessarily expert in
+compilation and distribution of software. Conda-Forge addresses this need, by
+separating the code development and package management tasks. Conda-Forge is a
+packaging ecosystem based around the conda package manager and anaconda.org
+package repository. Conda-forge simplifies the developer burden by providing
+standard build environment for all platforms (ensuring binary compatibility
+across libraries) and by incorporating build and deployment into a streamlined
+GithHub-based workflow. It focuses on being community-driven with high
+centralized standards, and it serves as a gathering place for packaging
+beginners and veterans alike. This paper describes the Conda Forge philosophy
+and organization and we hope it will inspire people to join the conda-forge
+community.
 
 \section*{User's Perspective}
-\begin{enumerate}\conti
+
+The user's goal is simple: get some kind of work done, and do as little
+infrastructural work as possible to get that work done. As we discussed a bit
+above, using binary packages is usually a good way to reduce that initial
+infrastructural work, as dealing with compilers can be involved. Unfortunately,
+using binaries doesn't always work as well as it should. There's a few reasons
+why binaries break:
+
+\begin{enumerate}
+  \item Dependency libraries are an incompatible version
+  \item Dependency libraries were compiled with an incompatible toolchain
+  \item Library loading behavior of the operating system leads to usage of an
+    incompatible dependency library
+\end{enumerate}
+
 % why use conda/CF
 \item Conda is a binary package manager, etc..
 \item compare and contrast conda with pypi
