@@ -1,17 +1,5 @@
 [
     {
-        "author_order": 10000,
-        "email": "cjwright4242@gmail.com",
-        "github_id": "CJ-Wright",
-        "institution": "Columbia University",
-        "institution_address": "",
-        "institution_address_peerj": [
-            "Department of Applied Physics and Applied Mathematics, Columbia University, New York, NY 10027"
-        ],
-        "institution_address_siam": "New York, NY 10027",
-        "name": "Christopher J. Wright"
-    },
-    {
         "author_order": 0,
         "email": "sb2896@columbia.edu",
         "github_id": "sbillinge",
@@ -29,6 +17,11 @@
         "email": "marcel.bargull@udo.edu",
         "github_id": "mbargull"
     },
+    {
+        "name": "Lori A. Burns",
+        "email": "lori.burns@gmail.com",
+        "github_id": "loriab"
+    }
     {
         "name": "Matt Craig",
         "email": "mattwcraig@gmail.com",
@@ -95,8 +88,15 @@
         "github_id": "dougalsutherland"
     },
     {
-        "name": "Lori A. Burns",
-        "email": "lori.burns@gmail.com",
-        "github_id": "loriab"
-    }
+        "author_order": 10000,
+        "email": "cjwright4242@gmail.com",
+        "github_id": "CJ-Wright",
+        "institution": "Columbia University",
+        "institution_address": "",
+        "institution_address_peerj": [
+            "Department of Applied Physics and Applied Mathematics, Columbia University, New York, NY 10027"
+        ],
+        "institution_address_siam": "New York, NY 10027",
+        "name": "Christopher J. Wright"
+    },
 ]
